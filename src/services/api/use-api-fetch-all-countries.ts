@@ -1,12 +1,26 @@
-import { useQuery } from "@tanstack/react-query"
-import { api } from "./api"
+import { useQuery } from "@tanstack/react-query";
+import { api } from "./api";
 
-const fetchAllCountries = async () => {
-  const countriesResponse = await api.get<Module.Country.Type[]>('/all')
+type UseApiFetchAllCountriesProps = {
+  countryToSearch?: string;
+};
 
-  return countriesResponse.data
-}
+const fetchAllCountries = async (countryToSearch?: string) => {
+  let endpoint = "/all";
 
-export const useApiFetchAllCountries = () => {
-  return useQuery(["countries"], fetchAllCountries)
-}
+  if (countryToSearch) {
+    endpoint = `/name/${countryToSearch}`;
+  }
+
+  const countriesResponse = await api.get<Module.Country.Type[]>(endpoint);
+
+  return countriesResponse.data;
+};
+
+export const useApiFetchAllCountries = (
+  params?: UseApiFetchAllCountriesProps,
+) => {
+  return useQuery(["countries", params?.countryToSearch], () =>
+    fetchAllCountries(params?.countryToSearch),
+  );
+};

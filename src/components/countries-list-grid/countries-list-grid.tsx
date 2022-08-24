@@ -8,8 +8,8 @@ type CountriesListGridProps = {
 export const CountriesListGrid = ({ countries }: CountriesListGridProps) => {
   return (
     <div className={styles.grid}>
-      {countries.map((country) => (
-        <CountryCard key={country.cioc} country={country} />
+      {countries.map((country, idx) => (
+        <CountryCard key={`${country.cioc}-${idx}`} country={country} />
       ))}
     </div>
   );
