@@ -13,6 +13,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --very-dark-blue-color: hsl(200, 15%, 8%);
+  --dark-gray-color: hsl(0, 0%, 52%);
+  --very-light-gray-color : hsl(0, 0%, 98%);
+  --white-color: hsl(0, 0%, 100%);
 }
 
 a {
@@ -26,8 +31,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  /* display: flex;
+  place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
