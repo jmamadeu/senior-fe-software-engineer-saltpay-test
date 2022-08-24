@@ -7,7 +7,7 @@ type CountryCardProps = {
 export const CountryCard = ({
   country: { name, capital, flag, population, region },
 }: CountryCardProps) => (
-  <div>
+  <div className={styles.card}>
     <img width={200} height={150} alt="country flag" src={flag} />
 
     <div className={styles.cardContent}>
