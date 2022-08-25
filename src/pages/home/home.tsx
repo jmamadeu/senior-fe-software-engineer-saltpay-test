@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Skeleton from "react-loading-skeleton";
 import { CountriesListGrid } from "../../components/countries-list-grid/countries-list-grid";
 import { SearchInput } from "../../components/search-input/search-input";
 import { useApiFetchAllCountries } from "../../services/api/use-api-fetch-all-countries";
@@ -22,7 +23,7 @@ function HomePage() {
     OPTIONS[0],
   );
 
-  const { data: allCountries } = useApiFetchAllCountries({
+  const { data: allCountries, isLoading } = useApiFetchAllCountries({
     countryToSearch: search,
   });
 
@@ -45,6 +46,17 @@ function HomePage() {
             onChange={(e) => setRegion({ value: e?.value, label: e?.label })}
           />
         </div>
+
+        {isLoading && (
+          <>
+            <Skeleton count={5} />
+            <Skeleton count={5} />
+          </>
+        )}
+
+        {!isLoading && !filteredCountries?.length && (
+          <h4>There's no countries to show</h4>
+        )}
 
         {filteredCountries && (
           <CountriesListGrid countries={filteredCountries} />
