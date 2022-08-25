@@ -15,3 +15,23 @@
   in extra narrow spaces */
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
 }
+
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lineItem {
+  display: flex;
+  gap: 10;
+}
+
+.sectionCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: 60
+}

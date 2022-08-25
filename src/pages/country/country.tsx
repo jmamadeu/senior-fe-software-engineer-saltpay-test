@@ -5,6 +5,7 @@ import styles from "./country.module.css";
 
 function CountryPage() {
   let { countryName } = useParams();
+
   const { data: country } = useApiFetchCountryByName({
     name: countryName ?? "",
   });
@@ -24,8 +25,8 @@ function CountryPage() {
           <div>
             <h2>{country?.name}</h2>
 
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+            <div className={styles.mainContainer}>
+              <div className={styles.sectionCard}>
                 <span>
                   <b>Native Name</b> {country?.nativeName}
                 </span>
@@ -42,22 +43,22 @@ function CountryPage() {
                   <b>Capital</b> {country?.capital}
                 </span>
               </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div className={styles.sectionCard}>
                 <span>
                   <b>Top Level Domain</b> {country?.topLevelDomain}
                 </span>
                 <span>
                   <b>Currencies</b>{" "}
-                  <div style={{ display: "flex", gap: 10 }}>
-                    {country?.currencies.map((cr) => (
+                  <div className={styles.lineItem}>
+                    {country?.currencies?.map((cr) => (
                       <span key={cr.code}>{cr.code}</span>
                     ))}
                   </div>
                 </span>
                 <span>
                   <b>Languages</b>
-                  <div style={{ display: "flex", gap: 10 }}>
-                    {country?.languages.map((lang) => (
+                  <div className={styles.lineItem}>
+                    {country?.languages?.map((lang) => (
                       <span key={lang.name}>{lang.name}</span>
                     ))}
                   </div>
@@ -65,10 +66,10 @@ function CountryPage() {
               </div>
             </div>
 
-            <div style={{ marginTop: 60 }}>
+            <div className={styles.footer}>
               <span>Border Countries: </span>
-              <div style={{ display: "flex", gap: 10 }}>
-                {country?.borders.map((border) => (
+              <div className={styles.lineItem}>
+                {country?.borders?.map((border) => (
                   <span key={border}>{border}</span>
                 ))}
               </div>
