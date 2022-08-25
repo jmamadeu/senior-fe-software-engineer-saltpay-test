@@ -1,0 +1,17 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 20px;
+}
+
+.grid {
+  --min: 200px;
+  --gap: 1rem;
+
+  display: grid;
+  grid-gap: var(--gap);
+  /* min() with 100% prevents overflow
+  in extra narrow spaces */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+}
